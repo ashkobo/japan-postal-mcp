@@ -24,7 +24,7 @@ function reply(fn) {
   return async (args) => {
     try {
       const result = { ...fn(args), dataAsOf: asOf() };
-      return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
+      return { content: [{ type: "text", text: JSON.stringify(result) }] };
     } catch (err) {
       return { isError: true, content: [{ type: "text", text: err.message }] };
     }
