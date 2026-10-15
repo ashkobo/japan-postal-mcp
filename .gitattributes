@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Empty final TSV columns are significant, not trailing whitespace mistakes.
+data/*.tsv whitespace=-blank-at-eol

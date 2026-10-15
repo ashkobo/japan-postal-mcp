@@ -126,7 +126,9 @@ function clean(value) {
 function splitTown(town, kana, city) {
   if (town === "以下に掲載がない場合") return ["", "", town];
   if (/の次に.*番地.*がくる場合/.test(town)) return ["", "", town];
-  if (town.endsWith("一円") && city.endsWith(town.slice(0, -2))) return ["", "", "一円"];
+  if (town.length > 2 && town.endsWith("一円") && city.endsWith(town.slice(0, -2))) {
+    return ["", "", "一円"];
+  }
 
   const m = /^(.*?)\((.*)\)$/.exec(town);
   if (!m) return [town, kana, ""];

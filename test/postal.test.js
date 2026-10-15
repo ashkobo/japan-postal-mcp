@@ -10,6 +10,11 @@ import { lookup, search } from "../src/index.js";
 
 const code = (address) => search(address).results.map((r) => r.code);
 
+test("the real town named 一円 must not be discarded as a whole-city note", () => {
+  assert.equal(lookup("522-0317").results[0].town, "一円");
+  assert.deepEqual(code("滋賀県犬上郡多賀町一円"), ["522-0317"]);
+});
+
 test("lookup accepts the usual ways of writing a code", () => {
   for (const input of ["1000005", "100-0005", "〒100-0005", "１００－０００５"]) {
     const { results } = lookup(input);
